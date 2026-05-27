@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProductQrApi.Data;
 using ProductQrApi.DTOs;
-using ProductQrApi.Entities;
+using ProductQrApi.Interfaces;
+using ProductQrApi.Responses;
 
 namespace ProductQrApi.Controllers;
 
@@ -10,11 +9,11 @@ namespace ProductQrApi.Controllers;
 [Route("api/products")]
 public class ProductController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IProductService _service;
 
-    public ProductController(AppDbContext context)
+    public ProductController(IProductService service)
     {
-        _context = context;
+        _service = service;
     }
 
     [HttpPost]
@@ -22,49 +21,53 @@ public class ProductController : ControllerBase
         [FromForm] CreateProductDto dto
     )
     {
-        string imageUrl = "";
+        var product = await _service.CreateAsync(dto);
 
-        if (dto.Image != null)
-        {
-            var fileName = Guid.NewGuid() +
-                           Path.GetExtension(dto.Image.FileName);
-
-            var path = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "wwwroot/uploads",
-                fileName
-            );
-
-            using var stream = new FileStream(path, FileMode.Create);
-
-            await dto.Image.CopyToAsync(stream);
-
-            imageUrl = "/uploads/" + fileName;
-        }
-
-        var product = new Product
-        {
-            Name = dto.Name,
-            Description = dto.Description,
-            Price = dto.Price,
-            CategoryId = dto.CategoryId,
-            ImageUrl = imageUrl
-        };
-
-        _context.Products.Add(product);
-
-        await _context.SaveChangesAsync();
-
-        return Ok(product);
+        return Ok(
+            new ApiResponse<object>(
+                true,
+                "Product created successfully",
+                product
+            )
+        );
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var products = await _context.Products
-            .Include(x => x.Category)
-            .ToListAsync();
+        var products = await _service.GetAllAsync();
 
-        return Ok(products);
+        return Ok(
+            new ApiResponse<object>(
+                true,
+                "Products fetched successfully",
+                products
+            )
+        );
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var product = await _service.GetByIdAsync(id);
+
+        if (product == null)
+        {
+            return NotFound(
+                new ApiResponse<object>(
+                    false,
+                    "Product not found",
+                    null
+                )
+            );
+        }
+
+        return Ok(
+            new ApiResponse<object>(
+                true,
+                "Product fetched successfully",
+                product
+            )
+        );
     }
 }

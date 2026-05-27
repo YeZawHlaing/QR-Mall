@@ -1,14 +1,26 @@
 using Microsoft.EntityFrameworkCore;
 using ProductQrApi.Data;
+using ProductQrApi.Interfaces;
+using ProductQrApi.Repositories;
+using ProductQrApi.Services;
+using ProductQrApi.Profiles;
+using ProductQrApi.Middleware;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+// Add Controllers and prevent JSON infinite Reference Cycles
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
+// OpenAPI/Swagger Setup
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
 
+// Database Configuration (PostgreSQL)
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(
@@ -16,6 +28,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     );
 });
 
+// CORS Policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -26,17 +39,28 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Dependency Injection (DI) Registrations
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 var app = builder.Build();
 
-app.UseSwagger();
-
-app.UseSwaggerUI();
+// Configure the HTTP request pipeline
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseStaticFiles();
 
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
+
+// Custom Global Error Handling
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
