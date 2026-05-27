@@ -2,9 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 using ProductQrApi.Interfaces;
 using ProductQrApi.Responses;
 using ProductQrApi.Services;
+using Microsoft.AspNetCore.Authorization;
+using ProductQrApi.DTOs;
+
+
 
 namespace ProductQrApi.Controllers;
 
+[Authorize]  
 [ApiController]
 [Route("api/admin")]
 public class AdminController : ControllerBase
@@ -84,5 +89,37 @@ public async Task<IActionResult> DownloadQrPdf(
 
     return File(pdf, "application/pdf", $"qr-{id}.pdf");
 }
+
+//  [HttpPost]
+//     public async Task<IActionResult> Create(
+//         [FromForm] CreateProductDto dto
+//     )
+//     {
+//         var product = await _service.CreateAsync(dto);
+
+//         return Ok(
+//             new ApiResponse<object>(
+//                 true,
+//                 "Product created successfully",
+//                 product
+//             )
+//         );
+//     }
+
+// POST: api/admin
+    [HttpPost("products")]
+    public async Task<IActionResult> Create([FromForm] CreateProductDto dto)
+    {
+        // FIX: Changed '_service' to '_productService'
+        var product = await _productService.CreateAsync(dto); 
+
+        return Ok(
+            new ApiResponse<object>(
+                true,
+                "Product created successfully",
+                product
+            )
+        );
+    }
 
 }

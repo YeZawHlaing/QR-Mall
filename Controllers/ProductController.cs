@@ -16,21 +16,7 @@ public class ProductController : ControllerBase
         _service = service;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(
-        [FromForm] CreateProductDto dto
-    )
-    {
-        var product = await _service.CreateAsync(dto);
-
-        return Ok(
-            new ApiResponse<object>(
-                true,
-                "Product created successfully",
-                product
-            )
-        );
-    }
+   
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
