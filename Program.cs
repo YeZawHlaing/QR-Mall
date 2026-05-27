@@ -43,6 +43,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddScoped<PdfService>();
 
 var app = builder.Build();
 

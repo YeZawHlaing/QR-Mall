@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2CrgRNOvyTM=",
+  "dgSpecHash": "0o3g3BpCYkQ=",
   "success": true,
   "projectFilePath": "/home/kali/Desktop/product-qr-api/product-qr-api.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "/home/kali/.nuget/packages/npgsql/10.0.3/npgsql.10.0.3.nupkg.sha512",
     "/home/kali/.nuget/packages/npgsql.entityframeworkcore.postgresql/10.0.2/npgsql.entityframeworkcore.postgresql.10.0.2.nupkg.sha512",
     "/home/kali/.nuget/packages/qrcoder/1.8.0/qrcoder.1.8.0.nupkg.sha512",
+    "/home/kali/.nuget/packages/questpdf/2026.5.0/questpdf.2026.5.0.nupkg.sha512",
     "/home/kali/.nuget/packages/swashbuckle.aspnetcore/10.1.7/swashbuckle.aspnetcore.10.1.7.nupkg.sha512",
     "/home/kali/.nuget/packages/swashbuckle.aspnetcore.swagger/10.1.7/swashbuckle.aspnetcore.swagger.10.1.7.nupkg.sha512",
     "/home/kali/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.1.7/swashbuckle.aspnetcore.swaggergen.10.1.7.nupkg.sha512",
