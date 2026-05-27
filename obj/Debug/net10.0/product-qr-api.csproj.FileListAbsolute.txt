@@ -127,3 +127,9 @@
 /home/kali/Desktop/product-qr-api/obj/Debug/net10.0/product-qr-api.pdb
 /home/kali/Desktop/product-qr-api/obj/Debug/net10.0/product-qr-api.genruntimeconfig.cache
 /home/kali/Desktop/product-qr-api/obj/Debug/net10.0/ref/product-qr-api.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/Microsoft.Win32.SystemEvents.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/QRCoder.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/System.Drawing.Common.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
+/home/kali/Desktop/product-qr-api/bin/Debug/net10.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll

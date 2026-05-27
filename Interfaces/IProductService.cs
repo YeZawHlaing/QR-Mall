@@ -1,4 +1,5 @@
 using ProductQrApi.DTOs;
+using ProductQrApi.Entities; 
 
 namespace ProductQrApi.Interfaces;
 
@@ -11,4 +12,6 @@ public interface IProductService
     Task<List<ProductResponseDto>> GetAllAsync();
 
     Task<ProductResponseDto?> GetByIdAsync(int id);
+    Task<ProductResponseDto?> GetByCodeAsync(string code);
+
 }
