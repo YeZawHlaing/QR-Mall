@@ -147,6 +147,12 @@ public class ProductService : IProductService
         return _mapper.Map<ProductResponseDto>(product);
     }
 
+    public async Task DeleteAsync(int id)
+{
+    await _repository.DeleteAsync(id);
+}
+
+
     public async Task<ProductResponseDto?> GetByCodeAsync(string code)
 {
     var product = await _repository.GetByCodeAsync(code);

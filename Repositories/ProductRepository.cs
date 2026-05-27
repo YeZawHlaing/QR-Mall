@@ -50,4 +50,15 @@ public async Task<Product?> GetByCodeAsync(string code)
         .Include(x => x.Category)
         .FirstOrDefaultAsync(x => x.PublicCode == code);
 }
+
+public async Task DeleteAsync(int id)
+{
+    var product = await _context.Products.FindAsync(id);
+
+    if (product != null)
+    {
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
+    }
+}
 }

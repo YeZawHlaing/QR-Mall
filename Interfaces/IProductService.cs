@@ -14,4 +14,6 @@ public interface IProductService
     Task<ProductResponseDto?> GetByIdAsync(int id);
     Task<ProductResponseDto?> GetByCodeAsync(string code);
 
+    Task DeleteAsync(int id);
+
 }
