@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductQrApi.Interfaces;
 using ProductQrApi.Responses;
+using ProductQrApi.Services;
 
 namespace ProductQrApi.Controllers;
 
@@ -61,4 +62,27 @@ public async Task<IActionResult> Delete(int id)
         null
     ));
 }
+
+
+[HttpGet("products/{id}/qr/pdf")]
+public async Task<IActionResult> DownloadQrPdf(
+    int id,
+    [FromServices] PdfService pdfService)
+{
+    var product = await _productService.GetByIdAsync(id);
+
+    if (product == null)
+        return NotFound();
+
+    var qrPath = Path.Combine(
+        Directory.GetCurrentDirectory(),
+        "wwwroot",
+        product.QrUrl.TrimStart('/')
+    );
+
+    var pdf = pdfService.GenerateQrPdf(qrPath, product.Name);
+
+    return File(pdf, "application/pdf", $"qr-{id}.pdf");
+}
+
 }
