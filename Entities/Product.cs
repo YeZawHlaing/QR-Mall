@@ -10,7 +10,11 @@ public class Product : BaseEntity
 
     public string ImageUrl { get; set; } = string.Empty;
 
+    public string QrUrl { get; set; } = string.Empty; // NEW
+
     public int CategoryId { get; set; }
 
     public Category? Category { get; set; }
+
+    public string PublicCode { get; set; } = string.Empty;
 }

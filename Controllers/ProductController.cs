@@ -46,6 +46,19 @@ public class ProductController : ControllerBase
         );
     }
 
+    [HttpGet("/p/{code}")]
+public async Task<IActionResult> GetPublicProduct(string code)
+{
+    var product = await _service.GetByCodeAsync(code);
+
+    if (product == null)
+    {
+        return NotFound();
+    }
+
+    return Ok(product);
+}
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {

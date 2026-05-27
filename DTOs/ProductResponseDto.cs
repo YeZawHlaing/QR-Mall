@@ -13,4 +13,6 @@ public class ProductResponseDto
     public string ImageUrl { get; set; } = string.Empty;
 
     public string CategoryName { get; set; } = string.Empty;
+
+    public string QrUrl { get; set; } = string.Empty;
 }

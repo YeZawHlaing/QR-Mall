@@ -36,4 +36,18 @@ public class ProductRepository : IProductRepository
             .Include(x => x.Category)
             .FirstOrDefaultAsync(x => x.Id == id);
     }
+
+    public async Task<Product> UpdateAsync(Product product)
+{
+    _context.Products.Update(product);
+    await _context.SaveChangesAsync();
+    return product;
+}
+
+public async Task<Product?> GetByCodeAsync(string code)
+{
+    return await _context.Products
+        .Include(x => x.Category)
+        .FirstOrDefaultAsync(x => x.PublicCode == code);
+}
 }
