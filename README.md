@@ -208,4 +208,4 @@ Target Scan Target URL Layout
 [https://domain.com/products/8f3b2326-cd5b-4b2a-9f5e-bd50fdfce021](https://domain.com/products/8f3b2326-cd5b-4b2a-9f5e-bd50fdfce021)
 
 ```
-![Dynamic Product Routing QR Barcode](assets/qr.png)
+![Dynamic Product Routing QR Barcode](./wwwroot/qrcodes/qr.png)
