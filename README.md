@@ -4,6 +4,6 @@ A robust, enterprise-ready backend API built with .NET 10, PostgreSQL, and JWT A
 
 ---
 
-## 1. System Architecture & Use Case Flow
+## 1. System Architecture & Use Case Flowg
 
 The system architecture decouples the administration panel, public client interface, database layer, and generation engine.
