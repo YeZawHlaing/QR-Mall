@@ -200,3 +200,12 @@ Instantiate Target Runtime Thread:
 
 dotnet run --project ProductCatalog.API
 ```
+## 10. Generated Asset Output Example
+When a product record is successfully committed via administrative channels, the configuration interface generates a dynamic vector matrix payload. This can be embedded directly inside client view templates using clean URI interpretation markup.
+
+Target Scan Target URL Layout
+```text
+[https://domain.com/products/8f3b2326-cd5b-4b2a-9f5e-bd50fdfce021](https://domain.com/products/8f3b2326-cd5b-4b2a-9f5e-bd50fdfce021)
+
+```
+![Dynamic Product Routing QR Barcode](assets/qr.png)
