@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("product-qr-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4b38e2411bb6ceea5df625cc5bcb813b36b8a0e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+880ee6b36b483b34247540c4ae1d7d2d674ac967")]
 [assembly: System.Reflection.AssemblyProductAttribute("product-qr-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("product-qr-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
